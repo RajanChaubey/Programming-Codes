@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CharacterCount {
+    public static void main(String[] args) {
+        String str = "Programming is Fun";
+
+        // Convert the string to lowercase to ignore case
+        str = str.toLowerCase();
+
+        // Create a map to store character counts
+        Map<Character, Integer> charCountMap = new HashMap<>();
+
+        // Iterate over each character
+        for (char c : str.toCharArray()) {
+            // Optional: Skip spaces
+            if (c == ' ') {
+                continue;
+            }
+
+            // Count characters
+            if (charCountMap.containsKey(c)) {
+                charCountMap.put(c, charCountMap.get(c) + 1);
+            } else {
+                charCountMap.put(c, 1);
+            }
+        }
+
+        // Print the character counts
+        System.out.println("Character count (case-insensitive):");
+        for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
+}
