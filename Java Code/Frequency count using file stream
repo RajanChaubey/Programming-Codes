@@ -1,0 +1,22 @@
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class CharFrequencyStream {
+    public static void main(String[] args) {
+        String str = "chAubay";
+       // String str = str1.toLowerCase();
+
+        Map<Character, Long> mp =    str.chars()                         // IntStream of character codes
+                                     .mapToObj(c -> (char) c)           // Convert int to Character
+                                     .collect(Collectors.groupingBy(    // Group by character
+                                      Function.identity(),             // Key: character itself
+                                      Collectors.counting() ));         // Value: count of each character
+                
+
+        // Print result
+        mp.forEach((ch, count) ->System.out.println(ch + ":"+ count));
+        
+        
+    }
+}
